@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TemperatureMonitor.Models
 {
-    public interface ICityRepository
+    interface ICityRepository
     {
-        bool Add(IMonitoredCity city);
-        bool Remove(int cityID);
+        string GetName(int Id);
+        void Initialize(SqlConnection SqlConnection);
+
     }
 }

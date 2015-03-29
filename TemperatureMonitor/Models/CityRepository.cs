@@ -1,43 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Dapper;
+using System.Threading.Tasks;
 
 namespace TemperatureMonitor.Models
 {
-    public static class CityRepository //: ICityRepository
+    public static class CityRepository
     {
-        private static IDataCollection _cities;
-        private static SqlConnection _result;
-
-        //public CityRepository(IDataCollection dataCollection)
-       // {
-       //     _cities = dataCollection;
-       // }
-        public static void Initialize(IDataCollection dataCollection, string sqlConnection)
+        private static SqlConnection _sqlConnection;
+               
+        public static void Initialize(string sqlConnection)
         {
-            _cities = dataCollection;
-            _result = new SqlConnection(sqlConnection);
+            _sqlConnection = new SqlConnection(sqlConnection);
         }
 
-        public static bool Add(IMonitoredCity city)
+        public static Task<IEnumerable<City>> GetAll()
         {
-            return _cities.Add(city);
-
+            return _sqlConnection.GetListAsync<City>();
         }
 
-        public static bool Remove(int cityID)
+        public static async Task<string> GetName(int Id)
         {
-            return _cities.Remove(cityID);
-
-
+           City x = await _sqlConnection.GetAsync<City>(Id);
+           return x.Name;
         }
-
-        
-       
-            
-        
     }
 }

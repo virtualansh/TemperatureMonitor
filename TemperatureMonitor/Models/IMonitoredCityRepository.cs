@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TemperatureMonitor.Models
 {
-    public interface IDataCollection
+    public interface IMonitoredCityRepository
     {
         bool Add(IMonitoredCity city);
         bool Remove(int cityID);
 
+        bool Find(int cityID);
+
         string GetName(int cityID);
 
-
-
-        object SetTemperature(int cityID, float temperature);
+        string UpdateTemperature(int cityID, float temperature);
     }
 }

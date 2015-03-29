@@ -8,10 +8,11 @@ namespace TemperatureMonitor.Models
 {
     public interface IMonitoredCity
     {
-        int CityID { get; set;}
-        string CityName { get; set;}
+        int Id { get; set;}
+        string Name { get; set;}
         int SensingPeriod { get; set; }
         float LatestTemperature { get; set; }
 
+        int CityId { get; set; }
     }
 }

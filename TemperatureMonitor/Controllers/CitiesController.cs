@@ -15,7 +15,7 @@ namespace TemperatureMonitor.Controllers
     {
         public async Task<IHttpActionResult> Get()
         {
-            var result = await Repository.GetAll();
+            var result = await CityRepository.GetAll();
             return Ok(result.OrderBy(c => c.Name));
         }
     }

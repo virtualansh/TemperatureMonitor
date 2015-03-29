@@ -104,17 +104,18 @@
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HTTPRequestHandler.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\ICityRepository.cs" />
     <Compile Include="Models\MonitoredCity.cs" />
     <Compile Include="Controllers\TemperatureController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CityRepository.cs" />
+    <Compile Include="Models\MonitoredCityRepository.cs" />
     <Compile Include="Models\DataCollection.cs" />
     <Compile Include="Models\IMonitoredCity.cs" />
-    <Compile Include="Models\ICityRepository.cs" />
+    <Compile Include="Models\IMonitoredCityRepository.cs" />
     <Compile Include="Models\IDataCollection.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\CityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

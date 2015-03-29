@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Temperature Monitor</title>
+    <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+</head>
+<body ng-app="temperatureApp">
+
+    <div ng-controller="temperature" class="container">
+         <div class="row row-centered">
+             <div class="col-md-6 col-md-offset-3 panel panel-default">
+                 <div class="page-header text-center">
+
+                     <h1>Temperature Monitor</h1>
+
+                 </div>
+                 <div class="row row-centered">
+                     <form class="form-inline text-center">
+                         <div>
+                             <div class="form-group">
+                                 <select ng-model="newCity"
+                                         ng-options="city.Name for city in cities track by city.Id"
+                                         class="form-control"></select>
+                                 <div>
+                                     <span ng-bind="newCity.Name"></span>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <button type="button" ng-click="addCity(newCity)" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add City</button>
+                             </div>
+                         </div>
+                     </form>
+                 </div>
+                 <hr>
+                 <div class="row row-centered">
+                     <div class="row row-centered"  ng-repeat="monitoredCity in monitoredCities track by monitoredCity.Id">
+                         <div class="panel col-md-offset-1">
+                             <div class="panel-body">
+                                 <div class="col-md-4 col-centered text-center">
+                                     <h2><span ng-bind="monitoredCity.Name"></span></h2>
+                                 </div>
+                                 <div class="col-md-4 col-centered text-center">
+                                     <h2><span ng-bind="monitoredCity.LatestTemperature"></span>&deg;C</h2>
+                                 </div>
+                                 <div class="col-md-3 text-center">
+                                     <button class="btn btn-primary center-block" ng-click="deleteCity(monitoredCity)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div> 
+                 <hr>
+                 <div class="text-center">
+                     <small class="text-muted"><a href="https://www.flickr.com/photos/erwlas/12729397614/">Background picture by erwlas @flickr</a>. Used under <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons - Attribution</a>.</small>
+                 </div>
+             </div>
+       </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="assets/lib/bootstrap.min.js"></script>
+    <script src="assets/lib/angular.min.js"></script> 
+    <script src="app/app.module.js"></script>
+    <script src="app/components/temperature/monitoredCityService.js"></script>
+    <script src="app/components/temperature/cityService.js"></script>
+    <script src="app/components/temperature/temperatureUIController.js"></script>
+</body>
+</html>
